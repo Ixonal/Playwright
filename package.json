@@ -1,0 +1,35 @@
+{
+  "name": "OpenVN",
+  "description": "HTML 5 based visual novel engine.",
+  "repository": "",
+  "license": "MIT",
+  "dependencies": {
+    "rxjs": "^5.0.0-beta.2",
+    "bluebird": "^3.3.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-watch": "^4.3.5",
+    "gulp-plumber": "^1.1.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.12.1",
+    "gulp-webserver": "^0.9.1",
+    "typescript": "^1.8.7",
+    "run-sequence": "^1.1.5",
+    "merge2": "^1.0.1",
+    "del": "^2.2.0"
+  },
+  "jspm": {
+    "configFile": "example/config.js",
+    "dependencies": {
+      "bluebird": "npm:bluebird@^3.3.4",
+      "rxjs": "npm:rxjs@^5.0.0-beta.2"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  }
+}

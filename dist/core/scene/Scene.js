@@ -1,0 +1,2 @@
+System.register(["./ActorSceneBuilder","./SceneSceneBuilder"],function(e,n){"use strict";var t,c,r;n&&n.id;return{setters:[function(e){t=e},function(e){c=e}],execute:function(){r=function(){function e(e,n){this._actions=[],this._name=e,n(this)}return e.prototype.actor=function(e){return new t.ActorSceneBuilder(e,this)},e.prototype.scene=function(){return new c.SceneSceneBuilder(this)},e}(),e("Scene",r)}}});
+//# sourceMappingURL=Scene.js.map

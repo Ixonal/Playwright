@@ -1,0 +1,1 @@
+System.register(["playwright/core/Actor"],function(t,e){"use strict";var r,c;e&&e.id;return{setters:[function(t){r=t}],execute:function(){t("blue",c=new r.Actor)}}});

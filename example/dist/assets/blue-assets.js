@@ -1,0 +1,1 @@
+System.register(["playwright/core/assets"],function(e,t){"use strict";var s,r;t&&t.id;return{setters:[function(e){s=e}],execute:function(){e("blueDisplay",r=new s.DrawnImageAsset)}}});

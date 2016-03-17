@@ -1,0 +1,1 @@
+System.register(["playwright/core/Stage"],function(e,t){"use strict";var n,i;t&&t.id;return{setters:[function(e){n=e}],execute:function(){i=function(){function e(){this.engine=new n.Stage("#game-root"),this.engine.start()}return e.game=new e,e}(),e("Game",i)}}});
