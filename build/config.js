@@ -3,7 +3,7 @@ var typescript = require("typescript");
 module.exports = {
   locations: {
     dist: "dist",
-    dts: "dist/dts",
+    dts: "dist",
     webserverRoot: "./",
     exampleDist: "example/dist"
   },
@@ -17,14 +17,14 @@ module.exports = {
   settings: {
     typescript: {
       module: "system",
-      declaration: true,
+     	declaration: true,
       removeComments: true,
       emitDecoratorMetadata: true,
       experimentalAsyncFunctions: true,
       experimentalDecorators: true,
       isolatedModules: true,
       allowJs: true,
-      typescript
+      typescript: typescript
     },
     uglify: {
       mangle: true,

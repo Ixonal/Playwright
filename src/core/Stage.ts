@@ -9,11 +9,26 @@ export class Stage {
     //locate the root element
     this.root = document.querySelector(rootSelector || "body");
     
+  }
+  
+  public eventStream: Observable<IEventEntry>;
+  protected renderer: Renderer = new Renderer();
+  protected root: Element;
+  protected canvas: HTMLCanvasElement;
+  protected scenes: Scene[] = [];
+  
+  public lights(): Stage {
+    
     //clear the root element out
     this.root.innerHTML = "";
     
     //create a canvas element and put it in the root element
     this.canvas = <HTMLCanvasElement>document.createElement("canvas");
+    //fill in the whole area
+    this.canvas.style.top = "0";
+    this.canvas.style.left = "0";
+    this.canvas.style.right = "0";
+    this.canvas.style.bottom = "0";
     this.root.appendChild(this.canvas);
     
     //now generate the event stream
@@ -22,35 +37,41 @@ export class Stage {
                     .subscribe(e => {
                       console.log((<KeyboardEvent>e.eventObject).which);
                     })
+    
+    return this;
   }
   
-  public eventStream: Observable<IEventEntry>;
-  protected root: Element;
-  protected canvas: HTMLCanvasElement;
-  protected scenes: Scene[];
-  
-  public start() {
-    
+  public curtain(): Stage {
+    return this;
   }
   
-  public stop() {
-    
+  public intermission(): Stage {
+    return this;
   }
   
   private generateEventStream() {
     //take all mousedown, mouseup, mousemove, keydown, and keyup 
     //and combine them into the event stream
-    let targetEvents = "mousedown mouseup mousemove keydown keyup",
+    let rootEvents = "mousedown mouseup mousemove",
+        documentEvents = "keydown keyup",
         streams = [];
     
-    targetEvents.split(" ").forEach(event => {
-      streams.push(Observable.fromEvent(this.root, "").map(e => ({
-        eventType: event,
+    rootEvents.split(" ").forEach(event => {
+      streams.push(Observable.fromEvent(this.root, event).map(e => ({
+        eventType: "" + event,
+        eventObject: e
+      })));
+    });
+    
+    documentEvents.split(" ").forEach(event => {
+      streams.push(Observable.fromEvent(document, event).map(e => ({
+        eventType: "" + event,
         eventObject: e
       })));
     });
     
     this.eventStream = Observable.merge.apply(Observable, streams);
-    console.log(this.eventStream);
+    
+    //this.eventStream.subscribe(event => console.log(event.eventType));
   }
 }

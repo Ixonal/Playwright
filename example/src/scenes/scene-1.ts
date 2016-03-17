@@ -1,4 +1,4 @@
-import { Scene, stage, fades } from "playwright/core/scene";
+import { Scene, stage, fades } from "../../../dist/core/scene";
 
 import { scene1Background, scene1Bgm } from "../assets/scene-assets";
 import { blue } from "../actors/blue";
@@ -11,6 +11,7 @@ export default new Scene("Scene 1", (the) => {
              .transitions(fades.in);
   
   an.actor(blue).enters(stage.right)
+                .movesTo("center")
                 .says("Hello World!")
                 .exits(stage.left);
   

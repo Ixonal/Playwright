@@ -16,10 +16,12 @@ function build(globs) {
                      .pipe(debug({ title: "Building" }))
                      .pipe(sourcemaps.init())
                      .pipe(typescript(config.settings.typescript));
-                     
+              
   return merge([
-    tsResult.dts.pipe(gulp.dest(config.locations.dts)),
+    tsResult.dts.pipe(debug({ title: "Definition" }))
+                .pipe(gulp.dest(config.locations.dts)),
     tsResult.js.pipe(uglify(config.settings.uglify))
+               .pipe(debug({ title: "Distribution" }))
                .pipe(sourcemaps.write("."))
                .pipe(gulp.dest(config.locations.dist))
   ]);

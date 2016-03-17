@@ -1,13 +1,14 @@
-import { Stage } from "playwright/core/Stage";
+import { Stage } from "../../dist/core/Stage";
 import * as scene1 from "./scenes/scene-1";
 
 export class Game {
   
   constructor() {
-    this.engine.start();
+    this.stage.lights()
+              .curtain();
   }
   
-  protected engine: Stage = new Stage("#game-root");
+  protected stage: Stage = new Stage("#game-root");
   
-  static game = new Game();
+  static instance = new Game();
 }

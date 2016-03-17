@@ -1,3 +1,3 @@
-import { Actor } from "playwright/core/Actor";
+import { Actor } from "../../../dist/core/actor/Actor";
 
 export const blue : Actor = new Actor();

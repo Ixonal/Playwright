@@ -25,6 +25,13 @@ export class ActorSceneBuilder extends SceneBuilder {
     return this;
   }
   
+  movesTo(location: any) {
+    this.scene._actions.push(new SceneAction(() => {
+      
+    }));
+    return this;
+  }
+  
   says(dialog: string) : ActorSceneBuilder {
     this.scene._actions.push(new SceneAction(() => {
       //todo: implement me!
