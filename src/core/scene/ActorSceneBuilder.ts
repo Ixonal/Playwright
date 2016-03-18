@@ -1,7 +1,8 @@
 import { SceneBuilder } from "./SceneBuilder";
 import { SceneAction } from "./SceneAction";
 import { Scene } from "./Scene";
-import {Actor} from "../actor/Actor";
+import { Actor } from "../actor/Actor";
+import { AudioAsset } from "../assets";
 
 export class ActorSceneBuilder extends SceneBuilder {
   actor: Actor;
@@ -11,14 +12,14 @@ export class ActorSceneBuilder extends SceneBuilder {
     this.actor = actor;
   }
   
-  enters(location: any) : ActorSceneBuilder {
+  enters(location: symbol) : ActorSceneBuilder {
     this.scene._actions.push(new SceneAction(() => {
       //todo: implement me!
     }));
     return this;
   }
   
-  exits(location: any) : ActorSceneBuilder {
+  exits(location: symbol) : ActorSceneBuilder {
     this.scene._actions.push(new SceneAction(() => {
       //todo: implement me!
     }));
@@ -27,12 +28,12 @@ export class ActorSceneBuilder extends SceneBuilder {
   
   movesTo(location: any) {
     this.scene._actions.push(new SceneAction(() => {
-      
+      //todo: implement me!
     }));
     return this;
   }
   
-  says(dialog: string) : ActorSceneBuilder {
+  says(dialog: string, audio?: AudioAsset) : ActorSceneBuilder {
     this.scene._actions.push(new SceneAction(() => {
       //todo: implement me!
     }));

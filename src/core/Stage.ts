@@ -1,9 +1,10 @@
 import { Observable } from "rxjs";
+import { Symbol } from "es6-symbol";
 import { Scene } from "./scene/Scene";
 import { Renderer } from "./Renderer";
-import { IEventEntry } from "./util/interface";
+import { IEventEntry, IRenderable } from "./util/interfaces";
 
-export class Stage {
+export class Stage implements IRenderable {
   constructor(rootSelector: string) {
     
     //locate the root element
@@ -49,6 +50,10 @@ export class Stage {
     return this;
   }
   
+  public render(): void {
+    
+  }
+  
   private generateEventStream() {
     //take all mousedown, mouseup, mousemove, keydown, and keyup 
     //and combine them into the event stream
@@ -74,4 +79,7 @@ export class Stage {
     
     //this.eventStream.subscribe(event => console.log(event.eventType));
   }
+  
+  public static RIGHT: symbol = Symbol();
+  public static LEFT: symbol = Symbol();
 }

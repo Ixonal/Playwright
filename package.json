@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "rxjs": "^5.0.0-beta.2",
-    "bluebird": "^3.3.4"
+    "bluebird": "^3.3.4",
+    "es6-symbol": "^3.0.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

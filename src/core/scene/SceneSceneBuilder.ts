@@ -2,6 +2,7 @@ import { SceneBuilder } from "./SceneBuilder";
 import { SceneAction } from "./SceneAction";
 import { Scene } from "./Scene";
 import { ImageAsset, AudioAsset } from "../assets";
+import { ISceneTransition } from "./sceneTransitions";
 
 
 export class SceneSceneBuilder extends SceneBuilder {
@@ -24,7 +25,7 @@ export class SceneSceneBuilder extends SceneBuilder {
     return this;
   }
   
-  transitions(transition: any) : SceneSceneBuilder {
+  transitions(transition: ISceneTransition) : SceneSceneBuilder {
     this.scene._actions.push(new SceneAction(() => {
       //todo: implement me!
     }));

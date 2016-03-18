@@ -1,3 +1,2 @@
 export * from "./Scene";
-export * from "./stage";
-export * from "./transitions";
+export * from "./sceneTransitions";
