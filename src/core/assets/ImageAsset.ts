@@ -1,10 +1,15 @@
 import { Asset } from "./Asset";
-import { IRenderable, IPositionable } from "../util/interfaces";
+import { IRenderable, IPositionable, IPosition } from "../util/interfaces";
 
-export class ImageAsset extends Asset implements IRenderable, IPositionable {
+export abstract class ImageAsset extends Asset implements IRenderable, IPositionable {
   
-  public render(): void {
-    
+  protected _position: IPosition = {}
+  
+  public abstract render(): void;
+  
+  public setPosition(position: IPosition): void {
+    this._position = position;
+    this.render();
   }
   
 }

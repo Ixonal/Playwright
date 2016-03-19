@@ -1,6 +1,6 @@
 import { ImageAsset } from "./ImageAsset";
 
-export class VideoAsset extends ImageAsset {
+export class SourcedImageAsset extends ImageAsset {
   
   public load() {
     

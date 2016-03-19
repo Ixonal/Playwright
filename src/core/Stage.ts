@@ -12,11 +12,15 @@ export class Stage implements IRenderable {
     
   }
   
-  public eventStream: Observable<IEventEntry>;
+  protected _eventStream: Observable<IEventEntry>;
   protected renderer: Renderer = new Renderer();
   protected root: Element;
   protected canvas: HTMLCanvasElement;
   protected scenes: Scene[] = [];
+  
+  public get eventStream() {
+    return this._eventStream;
+  }
   
   public lights(): Stage {
     
@@ -34,10 +38,6 @@ export class Stage implements IRenderable {
     
     //now generate the event stream
     this.generateEventStream();
-    this.eventStream.filter(e => e.eventType === "keydown")
-                    .subscribe(e => {
-                      console.log((<KeyboardEvent>e.eventObject).which);
-                    })
     
     return this;
   }
@@ -57,7 +57,7 @@ export class Stage implements IRenderable {
   private generateEventStream() {
     //take all mousedown, mouseup, mousemove, keydown, and keyup 
     //and combine them into the event stream
-    let rootEvents = "mousedown mouseup mousemove",
+    let rootEvents = "mousedown mouseup mousemove touchstart touchend touchmove touchcancel",
         documentEvents = "keydown keyup",
         streams = [];
     
@@ -75,9 +75,7 @@ export class Stage implements IRenderable {
       })));
     });
     
-    this.eventStream = Observable.merge.apply(Observable, streams);
-    
-    //this.eventStream.subscribe(event => console.log(event.eventType));
+    this._eventStream = (<Observable<IEventEntry>>Observable.merge.apply(Observable, streams)).share();
   }
   
   public static RIGHT: symbol = Symbol();

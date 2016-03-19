@@ -1,4 +1,4 @@
 
-export class Asset {
-  
+export abstract class Asset {
+  public abstract load(); 
 }

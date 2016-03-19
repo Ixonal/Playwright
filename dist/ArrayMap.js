@@ -1,0 +1,2 @@
+System.register(["./indexOf"],function(t,s){"use strict";var e,i;s&&s.id;return{setters:[function(t){e=t}],execute:function(){i=function(){function t(){this._keys=[],this._vals=[]}return t.prototype.getVal=function(t){var s=e["default"](this._keys,t);return this._vals[s]||null},t.prototype.setVal=function(t,s){var i=e["default"](this._keys,t);i>-1?this._vals[i]=s:(this._keys.push(t),this._vals.push(s))},t}(),t("ArrayMap",i)}}});
+//# sourceMappingURL=ArrayMap.js.map

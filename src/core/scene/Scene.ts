@@ -1,24 +1,22 @@
-import { Promise } from "bluebird";
-import { Actor } from "../actor/Actor";
-import { ActorSceneBuilder } from "./ActorSceneBuilder";
-import { SceneSceneBuilder } from "./SceneSceneBuilder";
 import { SceneAction } from "./SceneAction";
+import { SceneInterface } from "./SceneInterface";
+import { Stage } from "../Stage";
 
 export class Scene {
+  
+  constructor(name: string, script: (a: SceneInterface) => void) {
+    this._name = name;
+    script(new SceneInterface(this));
+  }
   
   _name: string;
   _actions: SceneAction[] = [];
   
-  constructor(name: string, script: (a: Scene) => void) {
-    this._name = name;
-    script(this);
+  public get name() {
+    return this._name;
   }
   
-  actor(actor: Actor) : ActorSceneBuilder {
-    return new ActorSceneBuilder(actor, this);
-  }
-  
-  scene() : SceneSceneBuilder {
-    return new SceneSceneBuilder(this);
+  public play(stage: Stage) {
+    //todo: do something with the scene actions and the stage here...
   }
 }

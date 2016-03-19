@@ -1,0 +1,2 @@
+System.register(["./SceneInterface"],function(e,t){"use strict";var n,r;t&&t.id;return{setters:[function(e){n=e}],execute:function(){r=function(){function e(e,t){this._actions=[],this._name=e,t(new n.SceneInterface(this))}return Object.defineProperty(e.prototype,"name",{get:function(){return this._name},enumerable:!0,configurable:!0}),e.prototype.play=function(e){},e}(),e("Scene",r)}}});
+//# sourceMappingURL=Scene.js.map
