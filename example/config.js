@@ -8,8 +8,8 @@ System.config({
   },
 
   map: {
-    "playwright": "/dist",
     "bluebird": "npm:bluebird@3.3.4",
+    "playwright": "/dist",
     "rxjs": "npm:rxjs@5.0.0-beta.2",
     "typescript": "npm:typescript@1.8.7",
     "github:jspm/nodelibs-assert@0.1.0": {

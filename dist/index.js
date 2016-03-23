@@ -1,2 +1,2 @@
-System.register(["./ImageAsset","./AudioAsset","./DrawnImageAsset","./SourcedImageAsset","./VideoAsset"],function(t,e){"use strict";function n(e){var n={};for(var s in e)"default"!==s&&(n[s]=e[s]);t(n)}e&&e.id;return{setters:[function(t){n(t)},function(t){n(t)},function(t){n(t)},function(t){n(t)},function(t){n(t)}],execute:function(){}}});
+System.register([],function(e,t){"use strict";t&&t.id;return{setters:[],execute:function(){}}});
 //# sourceMappingURL=index.js.map
