@@ -1,5 +1,6 @@
 import { Asset } from "./Asset";
-import { IRenderable, IPositionable, IPosition } from "../util/interfaces";
+import { IPositionable, IPosition } from "../positioning";
+import { IRenderable } from "../rendering";
 
 export abstract class ImageAsset extends Asset implements IRenderable, IPositionable {
   

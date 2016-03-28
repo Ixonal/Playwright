@@ -1,43 +1,48 @@
 import { Observable } from "rxjs";
 import { Symbol } from "es6-symbol";
 import { Scene } from "./scene/Scene";
-import { Renderer } from "./Renderer";
-import { IEventEntry, IRenderable } from "./util/interfaces";
+import { IRenderable, Renderer } from "./rendering";
+import { EventFactory } from "./events/EventFactory";
 
 export class Stage implements IRenderable {
   constructor(rootSelector: string) {
     
     //locate the root element
-    this.root = document.querySelector(rootSelector || "body");
+    this._root = document.querySelector(rootSelector || "body");
     
+    this._eventFactory = new EventFactory(this);
   }
   
-  protected _eventStream: Observable<IEventEntry>;
-  protected renderer: Renderer = new Renderer();
-  protected root: Element;
-  protected canvas: HTMLCanvasElement;
-  protected scenes: Scene[] = [];
+  protected _renderer: Renderer = null;
+  protected _root: Element;
+  protected _canvas: HTMLCanvasElement;
+  protected _scenes: Scene[] = [];
+  protected _eventFactory: EventFactory = null;
   
   public get eventStream() {
-    return this._eventStream;
+    return this._eventFactory.eventStream;
+  }
+  
+  public get root() {
+    return this._root;
   }
   
   public lights(): Stage {
     
     //clear the root element out
-    this.root.innerHTML = "";
+    this._root.innerHTML = "";
     
     //create a canvas element and put it in the root element
-    this.canvas = <HTMLCanvasElement>document.createElement("canvas");
+    this._canvas = <HTMLCanvasElement>document.createElement("canvas");
     //fill in the whole area
-    this.canvas.style.top = "0";
-    this.canvas.style.left = "0";
-    this.canvas.style.right = "0";
-    this.canvas.style.bottom = "0";
-    this.root.appendChild(this.canvas);
+    this._canvas.style.top = "0";
+    this._canvas.style.left = "0";
+    this._canvas.style.right = "0";
+    this._canvas.style.bottom = "0";
+    this._root.appendChild(this._canvas);
     
-    //now generate the event stream
-    this.generateEventStream();
+    //create a renderer for the canvas
+    this._renderer = new Renderer(this._canvas);
     
     return this;
   }
@@ -52,30 +57,6 @@ export class Stage implements IRenderable {
   
   public render(): void {
     
-  }
-  
-  private generateEventStream() {
-    //take all mousedown, mouseup, mousemove, keydown, and keyup 
-    //and combine them into the event stream
-    let rootEvents = "mousedown mouseup mousemove touchstart touchend touchmove touchcancel",
-        documentEvents = "keydown keyup",
-        streams = [];
-    
-    rootEvents.split(" ").forEach(event => {
-      streams.push(Observable.fromEvent(this.root, event).map(e => ({
-        eventType: "" + event,
-        eventObject: e
-      })));
-    });
-    
-    documentEvents.split(" ").forEach(event => {
-      streams.push(Observable.fromEvent(document, event).map(e => ({
-        eventType: "" + event,
-        eventObject: e
-      })));
-    });
-    
-    this._eventStream = (<Observable<IEventEntry>>Observable.merge.apply(Observable, streams)).share();
   }
   
   public static RIGHT: symbol = Symbol();

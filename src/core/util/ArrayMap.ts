@@ -1,5 +1,9 @@
 import indexOf from "./indexOf";
 
+/*
+ * Effectively a WeakMap, but using arrays... Suppose I should 
+ * use an actual WeakMap polyfill... meh, we'll get to that later.
+ */
 export class ArrayMap<T> {
   
   private _keys: any[] = [];

@@ -1,0 +1,2 @@
+System.register(["./Dialog"],function(t,e){"use strict";var n,o,r=(e&&e.id,this&&this.__extends||function(t,e){function n(){this.constructor=t}for(var o in e)e.hasOwnProperty(o)&&(t[o]=e[o]);t.prototype=null===e?Object.create(e):(n.prototype=e.prototype,new n)});return{setters:[function(t){n=t}],execute:function(){o=function(t){function e(){t.apply(this,arguments)}return r(e,t),e}(n.Dialog),t("GameMenu",o)}}});
+//# sourceMappingURL=GameMenu.js.map
